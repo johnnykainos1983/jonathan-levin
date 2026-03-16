@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+
+  --color-navy: #002147;
+  --color-gold: #C5A059;
+  --color-slate: #4A5568;
+  --color-gold-light: #D4AF37;
+  --color-navy-dark: #00152E;
+}
+
+
+
+@layer base {
+  body {
+    @apply bg-white text-navy font-sans antialiased;
+  }
+}
+
+.glow-on-hover {
+  transition: all 0.3s ease;
+}
+
+.glow-on-hover:hover {
+  box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+  transform: translateY(-2px);
+}
+
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  background-color: #f8f9fa;
+  padding: 1rem 0;
+}
+
+.ticker {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker 30s linear infinite;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

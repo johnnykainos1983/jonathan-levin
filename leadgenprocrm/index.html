@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadGenPro CRM | AI Employees That Run Your Business on Autopilot</title>
+    <meta name="description"
+        content="LeadGenPro CRM deploys persistent AI Employees to prospect, nurture, and close deals 24/7. The world's first autonomous CRM—stop chasing leads, start scaling.">
+    <meta name="keywords"
+        content="CRM, AI employees, lead generation, sales automation, AI prospecting, autonomous CRM">
+    <meta property="og:title" content="LeadGenPro CRM | AI-Powered Autonomous Sales">
+    <meta property="og:description"
+        content="Deploy AI Employees that prospect, nurture, and close deals while you sleep. The future of CRM is here.">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://leadgenprocrm.com">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- LeadConnector Widget Styles -->
+    <style>
+        .lc-form-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .lc-form-modal-overlay.active {
+            display: flex;
+        }
+
+        .lc-form-modal {
+            background: #16161e;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 0;
+        }
+
+        .lc-form-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .lc-form-modal-close:hover {
+            background: rgba(0, 210, 255, 0.2);
+            border-color: #00D2FF;
+        }
+
+        .lc-booking-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .lc-booking-modal-overlay.active {
+            display: flex;
+        }
+
+        .lc-booking-modal {
+            background: #16161e;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 0;
+        }
+
+        .lc-booking-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .lc-booking-modal-close:hover {
+            background: rgba(0, 210, 255, 0.2);
+            border-color: #00D2FF;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- NAVIGATION                                  -->
+    <!-- ═══════════════════════════════════════════ -->
+    <nav class="glass glass-nav" id="navbar">
+        <a href="#" class="logo-container" id="nav-logo">
+            <img src="assets/logo.png" alt="LeadGenPro CRM Logo">
+        </a>
+        <div class="nav-links" id="nav-links">
+            <a href="#features" id="nav-features">Features</a>
+            <a href="#how-it-works" id="nav-how">How It Works</a>
+            <a href="#pricing" id="nav-pricing">Pricing</a>
+            <a href="#testimonials" id="nav-testimonials">Results</a>
+            <a href="#faq" id="nav-faq">FAQ</a>
+            <a href="#" class="btn btn-outline-light" id="nav-login">Login</a>
+            <a href="javascript:void(0)" class="btn btn-primary btn-nav open-booking" id="nav-cta">Book a Demo</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#features" class="mobile-link">Features</a>
+        <a href="#how-it-works" class="mobile-link">How It Works</a>
+        <a href="#pricing" class="mobile-link">Pricing</a>
+        <a href="#testimonials" class="mobile-link">Results</a>
+        <a href="#faq" class="mobile-link">FAQ</a>
+        <a href="javascript:void(0)" class="btn btn-primary open-booking"
+            style="width:100%;text-align:center;margin-top:1rem;">Book a Demo</a>
+    </div>
+
+    <!-- Background Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- HERO SECTION                                -->
+    <!-- ═══════════════════════════════════════════ -->
+    <header class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Now Deploying AI Employees in 90 Seconds</span>
+            </div>
+            <h1 class="gravity-header">
+                Stop Chasing Leads.<br>
+                <span class="gradient-text">Let Your Business<br>Run Itself.</span>
+            </h1>
+            <p class="sub-header">LeadGenPro CRM isn't just a database. It's a workforce. Deploy pre-trained AI
+                Employees to Prospect, Nurture, and Close—while you focus on scale.</p>
+            <div class="hero-actions">
+                <a href="javascript:void(0)" class="btn btn-primary btn-lg open-booking" id="hero-cta-primary">
+                    <span>Book a Demo</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <a href="#pricing" class="btn btn-secondary btn-lg" id="hero-cta-secondary">See Pricing</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="2847">0</span><span class="stat-suffix">+</span>
+                    <span class="stat-label">AI Employees Deployed</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="340">0</span><span class="stat-suffix">%</span>
+                    <span class="stat-label">Avg. Lead Increase</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="12">0</span><span class="stat-suffix">M+</span>
+                    <span class="stat-label">Revenue Generated</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-visual-wrapper">
+                <img src="assets/hero_dashboard.png" alt="LeadGenPro CRM AI Dashboard" id="hero-img" loading="eager">
+                <div class="hero-glow"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- AUTHORITY / SOCIAL PROOF BAR               -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="authority-bar" id="authority">
+        <p class="authority-label">Trusted by 500+ Elite Growth Teams Worldwide</p>
+        <div class="logo-marquee">
+            <div class="marquee-track">
+                <div class="marquee-item">
+                    <svg viewBox="0 0 120 30" fill="currentColor" height="24"><text x="0" y="24" font-family="Outfit"
+                            font-weight="800" font-size="24">TechCo</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 140 30" fill="currentColor" height="24"><text x="0" y="24" font-family="Outfit"
+                            font-weight="800" font-size="24">GrowthX</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 160 30" fill="currentColor" height="24"><text x="0" y="24" font-family="Outfit"
+                            font-weight="800" font-size="24">ScaleForce</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 130 30" fill="currentColor" height="24"><text x="0" y="24" font-family="Outfit"
+                            font-weight="800" font-size="24">Nextera</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 150 30" fill="currentColor" height="24"><text x="0" y="24" font-family="Outfit"
+                            font-weight="800" font-size="24">VelocityAI</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 140 30" fill="currentColor" height="24"><text x="0" y="24" font-family="Outfit"
+                            font-weight="800" font-size="24">Quantum</text></svg>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="marquee-item">
+                    <svg viewBox="0 0 120 30" fill="currentColor" height="24"><text x="0" y="24" font-family="Outfit"
+                            font-weight="800" font-size="24">TechCo</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 140 30" fill="currentColor" height="24"><text x="0" y="24" font-family="Outfit"
+                            font-weight="800" font-size="24">GrowthX</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 160 30" fill="currentColor" height="24"><text x="0" y="24" font-family="Outfit"
+                            font-weight="800" font-size="24">ScaleForce</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 130 30" fill="currentColor" height="24"><text x="0" y="24" font-family="Outfit"
+                            font-weight="800" font-size="24">Nextera</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 150 30" fill="currentColor" height="24"><text x="0" y="24" font-family="Outfit"
+                            font-weight="800" font-size="24">VelocityAI</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 140 30" fill="currentColor" height="24"><text x="0" y="24" font-family="Outfit"
+                            font-weight="800" font-size="24">Quantum</text></svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- FEATURES SECTION                            -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="features" class="features">
+        <div class="section-header">
+            <span class="section-tag">Core Architecture</span>
+            <h2 class="section-title">The Architecture of Success</h2>
+            <p class="section-subtitle">Engineered for zero friction and maximum throughput. Every module is designed to
+                eliminate manual bottlenecks.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card glass reveal-element" id="feature-prospector">
+                <div class="feature-icon-wrapper">
+                    <div class="feature-icon">🛰️</div>
+                    <div class="feature-icon-glow"></div>
+                </div>
+                <h3>AI Prospector</h3>
+                <p>Continuously scours the web for your ideal customers based on 50+ data points. No more cold
+                    lists—only warm, qualified leads delivered daily.</p>
+                <div class="feature-metric">
+                    <span class="metric-value">10X</span>
+                    <span class="metric-label">More Qualified Leads</span>
+                </div>
+            </div>
+
+            <div class="feature-card glass reveal-element" id="feature-nurture">
+                <div class="feature-icon-wrapper">
+                    <div class="feature-icon">🤖</div>
+                    <div class="feature-icon-glow"></div>
+                </div>
+                <h3>Infinite Nurturing</h3>
+                <p>AI Employees engage in multi-channel conversations via email, SMS, and social DMs that feel 100%
+                    human. They never forget a follow-up.</p>
+                <div class="feature-metric">
+                    <span class="metric-value">300%</span>
+                    <span class="metric-label">Conversion Rate Boost</span>
+                </div>
+            </div>
+
+            <div class="feature-card glass reveal-element" id="feature-closing">
+                <div class="feature-icon-wrapper">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-icon-glow"></div>
+                </div>
+                <h3>Instant Closing</h3>
+                <p>Identifies buying intent signals in real-time. When a lead is hot, the AI either closes the deal
+                    autonomously or hands it to you at the perfect moment.</p>
+                <div class="feature-metric">
+                    <span class="metric-value">47%</span>
+                    <span class="metric-label">Faster Deal Velocity</span>
+                </div>
+            </div>
+
+            <div class="feature-card glass reveal-element" id="feature-reputation">
+                <div class="feature-icon-wrapper">
+                    <div class="feature-icon">⭐</div>
+                    <div class="feature-icon-glow"></div>
+                </div>
+                <h3>Reputation Engine</h3>
+                <p>Automatically requests reviews from happy customers across Google, Facebook & Yelp. Builds your
+                    5-star fortress on autopilot.</p>
+                <div class="feature-metric">
+                    <span class="metric-value">4.8★</span>
+                    <span class="metric-label">Avg. Client Rating</span>
+                </div>
+            </div>
+
+            <div class="feature-card glass reveal-element" id="feature-analytics">
+                <div class="feature-icon-wrapper">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-icon-glow"></div>
+                </div>
+                <h3>Revenue Intelligence</h3>
+                <p>Real-time dashboards show exactly where your revenue comes from. Track ROI on every campaign,
+                    channel, and AI agent down to the cent.</p>
+                <div class="feature-metric">
+                    <span class="metric-value">360°</span>
+                    <span class="metric-label">Revenue Visibility</span>
+                </div>
+            </div>
+
+            <div class="feature-card glass reveal-element" id="feature-pipeline">
+                <div class="feature-icon-wrapper">
+                    <div class="feature-icon">🔄</div>
+                    <div class="feature-icon-glow"></div>
+                </div>
+                <h3>Pipeline Automation</h3>
+                <p>Intelligent workflows move leads through your funnel automatically. Set triggers, conditions, and
+                    actions—then watch your pipeline fill itself.</p>
+                <div class="feature-metric">
+                    <span class="metric-value">24/7</span>
+                    <span class="metric-label">Always Active</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- HOW IT WORKS SECTION                        -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="section-header">
+            <span class="section-tag">The Process</span>
+            <h2 class="section-title">From Zero to Autopilot in 3 Steps</h2>
+            <p class="section-subtitle">No 6-month onboarding. No complex integrations. Deploy your first AI Employee in
+                under 90 seconds.</p>
+        </div>
+
+        <div class="steps-container">
+            <div class="step-card reveal-element" id="step-1">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <h3>Connect Your Channels</h3>
+                    <p>Plug in your email, phone, socials, and CRM in one click. Our AI syncs with your existing tech
+                        stack—GoHighLevel, HubSpot, Salesforce, or custom APIs.</p>
+                    <ul class="step-bullets">
+                        <li>One-click integrations</li>
+                        <li>No developer required</li>
+                        <li>Data migrated in minutes</li>
+                    </ul>
+                </div>
+                <div class="step-visual">
+                    <div class="step-icon-lg">🔗</div>
+                </div>
+            </div>
+
+            <div class="step-connector">
+                <div class="connector-line"></div>
+                <div class="connector-dot"></div>
+            </div>
+
+            <div class="step-card reverse reveal-element" id="step-2">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <h3>Train Your AI Employee</h3>
+                    <p>Feed your AI Employee your brand voice, product knowledge, and objection-handling scripts. It
+                        learns your unique selling proposition and becomes your best closer.</p>
+                    <ul class="step-bullets">
+                        <li>Custom voice training</li>
+                        <li>Objection playbooks</li>
+                        <li>Industry-specific templates</li>
+                    </ul>
+                </div>
+                <div class="step-visual">
+                    <div class="step-icon-lg">🧠</div>
+                </div>
+            </div>
+
+            <div class="step-connector">
+                <div class="connector-line"></div>
+                <div class="connector-dot"></div>
+            </div>
+
+            <div class="step-card reveal-element" id="step-3">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <h3>Deploy & Scale</h3>
+                    <p>Hit 'Deploy' and watch your AI Employee start prospecting, engaging, and booking meetings within
+                        minutes. Scale up by deploying more employees—no HR needed.</p>
+                    <ul class="step-bullets">
+                        <li>Live within 90 seconds</li>
+                        <li>Scale to 100+ agents</li>
+                        <li>Real-time performance tracking</li>
+                    </ul>
+                </div>
+                <div class="step-visual">
+                    <div class="step-icon-lg">🚀</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- PRICING SECTION                             -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="pricing" class="pricing">
+        <div class="section-header">
+            <span class="section-tag">Investment</span>
+            <h2 class="section-title">Choose Your Growth Engine</h2>
+            <p class="section-subtitle">No hidden fees. No long-term contracts. Cancel anytime.</p>
+        </div>
+
+        <!-- Setup Fee Banner -->
+        <div class="setup-banner reveal-element">
+            <div class="setup-old-price">$400</div>
+            <div class="setup-new">
+                <span>Now <strong>$179</strong> once-off setup on all plans</span>
+            </div>
+            <div class="setup-tag">(Limited-time onboarding special)</div>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Tier 1 — Reputation Management Essentials -->
+            <div class="pricing-card glass reveal-element" id="plan-tier1">
+                <div class="plan-header">
+                    <h3 class="plan-name">Tier 1 — Reputation Management Essentials</h3>
+                    <p class="plan-desc">Perfect for agencies wanting rock-solid reviews & lead capture.</p>
+                </div>
+                <div class="plan-price">
+                    <span class="currency">$</span>
+                    <span class="amount">150</span>
+                    <span class="period">/month</span>
+                </div>
+                <ul class="plan-features">
+                    <li><span class="check">✓</span> CRM & Pipeline Management</li>
+                    <li><span class="check">✓</span> Two-Way SMS & Email Messaging</li>
+                    <li><span class="check">✓</span> Local Phone Number + Missed-Call Text-Back</li>
+                    <li><span class="check">✓</span> Reputation Management & Review Requests</li>
+                    <li><span class="check">✓</span> Web Chat Widget & Lead Capture Forms</li>
+                    <li><span class="check">✓</span> Appointment Booking & Reminders</li>
+                    <li><span class="check">✓</span> Basic Workflow Automations</li>
+                    <li><span class="check">✓</span> Funnel & Landing Page Builder</li>
+                    <li><span class="check">✓</span> Messenger & Google Chat Integration</li>
+                </ul>
+                <p class="plan-support"><strong>Support:</strong> Standard</p>
+                <a href="javascript:void(0)" class="btn btn-primary btn-full open-booking" id="cta-tier1">Book a
+                    Demo</a>
+                <p class="plan-footer-note">Unlimited users • iOS & Android mobile app</p>
+            </div>
+
+            <!-- Tier 2 — Business Growth Automation Suite (Featured) -->
+            <div class="pricing-card glass featured reveal-element" id="plan-tier2">
+                <div class="featured-badge">Most Popular</div>
+                <div class="plan-header">
+                    <h3 class="plan-name">Tier 2 — Business Growth Automation Suite</h3>
+                    <p class="plan-desc">Everything in Tier 1 plus advanced workflows & marketing tools.</p>
+                </div>
+                <div class="plan-price">
+                    <span class="currency">$</span>
+                    <span class="amount">250</span>
+                    <span class="period">/month</span>
+                </div>
+                <ul class="plan-features">
+                    <li><span class="check">✓</span> Advanced Workflow Automations & Nurture</li>
+                    <li><span class="check">✓</span> Enhanced Forms & Surveys with AI-assisted copy</li>
+                    <li><span class="check">✓</span> Campaign & Ad Performance Tracking</li>
+                    <li><span class="check">✓</span> Social Scheduler & Email Campaign Tools</li>
+                    <li><span class="check">✓</span> Deeper funnel building + A/B testing</li>
+                    <li><span class="check">✓</span> Reporting & Attribution dashboards</li>
+                    <li><span class="check">✓</span> Everything in Tier 1 included</li>
+                </ul>
+                <p class="plan-support"><strong>Support:</strong> Standard</p>
+                <a href="javascript:void(0)" class="btn btn-primary btn-full open-booking" id="cta-tier2">Book a
+                    Demo</a>
+                <p class="plan-footer-note">Unlimited users • iOS & Android mobile app</p>
+            </div>
+
+            <!-- Tier 3 — AI-Enhanced Ultimate Package -->
+            <div class="pricing-card glass reveal-element" id="plan-tier3">
+                <div class="plan-header">
+                    <h3 class="plan-name">Tier 3 — AI-Enhanced Ultimate Package</h3>
+                    <p class="plan-desc">Our complete growth OS with premium AI features.</p>
+                </div>
+                <div class="plan-price">
+                    <span class="currency">$</span>
+                    <span class="amount">400</span>
+                    <span class="period">/month</span>
+                </div>
+                <ul class="plan-features">
+                    <li><span class="check">✓</span> All Tier 2 tools + AI content & agent automations</li>
+                    <li><span class="check">✓</span> AI Employee: chatbot + voice agent (inbound/outbound)</li>
+                    <li><span class="check">✓</span> AI-enhanced lead capture & decisioning</li>
+                    <li><span class="check">✓</span> Advanced reporting & revenue attribution</li>
+                    <li><span class="check">✓</span> Unlimited AI usage included</li>
+                </ul>
+                <p class="plan-support"><strong>Support:</strong> Priority + Monthly strategy session</p>
+                <a href="javascript:void(0)" class="btn btn-primary btn-full open-booking" id="cta-tier3">Book a
+                    Demo</a>
+                <p class="plan-footer-note">Unlimited users • iOS & Android mobile app</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- TESTIMONIALS SECTION                        -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="testimonials" class="testimonials">
+        <div class="testimonial-bg-wrapper">
+            <img src="assets/testimonial_bg.png" alt="" class="testimonial-bg-img" aria-hidden="true">
+        </div>
+        <div class="section-header">
+            <span class="section-tag">Proof</span>
+            <h2 class="section-title">What Elite Teams Are Saying</h2>
+            <p class="section-subtitle">Don't take our word for it. Here's raw data from real operators.</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card glass reveal-element" id="testimonial-1">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"We replaced 3 SDRs with LeadGenPro's AI Employees. Our pipeline is 4X
+                    larger and our cost-per-lead dropped by 70%. This isn't a CRM—it's a revenue machine."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MR</div>
+                    <div class="author-info">
+                        <span class="author-name">Marcus Reynolds</span>
+                        <span class="author-role">CEO, ScaleForce Digital</span>
+                    </div>
+                </div>
+                <div class="testimonial-metric">
+                    <span class="t-metric-value">$420K</span>
+                    <span class="t-metric-label">Annual Revenue Added</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card glass reveal-element" id="testimonial-2">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"From day one, the AI was booking qualified meetings. I went from 3
+                    meetings/week to 18. My calendar is full, my pipeline is predictable, and I sleep at night."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SK</div>
+                    <div class="author-info">
+                        <span class="author-name">Sarah Kim</span>
+                        <span class="author-role">Founder, NexGen Consulting</span>
+                    </div>
+                </div>
+                <div class="testimonial-metric">
+                    <span class="t-metric-value">500%</span>
+                    <span class="t-metric-label">Meeting Rate Increase</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card glass reveal-element" id="testimonial-3">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"We manage 12 client accounts through LeadGenPro. The white-label reports
+                    alone save us 20 hours per week. Our retention rate went from 60% to 94%."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">JD</div>
+                    <div class="author-info">
+                        <span class="author-name">James Drummond</span>
+                        <span class="author-role">Owner, Apex Marketing Agency</span>
+                    </div>
+                </div>
+                <div class="testimonial-metric">
+                    <span class="t-metric-value">94%</span>
+                    <span class="t-metric-label">Client Retention Rate</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- FAQ SECTION                                 -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="faq" class="faq">
+        <div class="section-header">
+            <span class="section-tag">Questions</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Everything you need to know before deploying your first AI Employee.</p>
+        </div>
+
+        <div class="faq-container">
+            <div class="faq-item glass reveal-element" id="faq-1">
+                <button class="faq-question" aria-expanded="false">
+                    <span>What exactly is an "AI Employee"?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>An AI Employee is a persistent, trained AI agent that performs specific business functions 24/7.
+                        Unlike chatbots, AI Employees can prospect for leads, send personalized outreach sequences,
+                        handle objections, book meetings on your calendar, and even close deals—all while matching your
+                        brand voice and following your playbook. Think of it as a tireless team member that never calls
+                        in sick.</p>
+                </div>
+            </div>
+
+            <div class="faq-item glass reveal-element" id="faq-2">
+                <button class="faq-question" aria-expanded="false">
+                    <span>How quickly can I get set up?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Most clients go from sign-up to first AI Employee deployed in under 90 seconds. Our platform
+                        connects to your existing tools, HubSpot, Salesforce, etc.) with one-click
+                        integrations. There's no developer needed and no 6-month onboarding—just connect, train, and
+                        deploy.</p
+                </div>
+            </div>
+
+            <div class="faq-item glass reveal-element" id="faq-3">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Will the AI sound robotic to my leads?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Absolutely not. Our AI undergoes custom voice training based on your brand's tone, vocabulary,
+                        and communication style. In blind tests, 94% of recipients couldn't distinguish our AI's
+                        messages from human-written ones. Every interaction feels personal, contextual, and authentic.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item glass reveal-element" id="faq-4">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Can I cancel my subscription anytime?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes—zero contracts, zero cancellation fees. We earn your business every month. If you're not
+                        seeing results, you can cancel with one click from your dashboard. That said, our average client
+                        stays for 18+ months because the ROI speaks for itself.</p>
+                </div>
+            </div>
+
+            <div class="faq-item glass reveal-element" id="faq-5">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Is my data secure?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Enterprise-grade security is baked in. We use AES-256 encryption at rest, TLS 1.3 in transit, SOC
+                        2 Type II compliance, and regular third-party penetration testing. Your data is hosted on ISO
+                        27001 certified infrastructure. We never sell or share your data—period.</p>
+                </div>
+            </div>
+
+            <div class="faq-item glass reveal-element" id="faq-6">
+                <button class="faq-question" aria-expanded="false">
+                    <span>What makes LeadGenPro different from other CRMs?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Traditional CRMs store data—we create revenue. While others give you a database and say "good
+                        luck," LeadGenPro deploys AI Employees that actually do the work: prospecting, nurturing,
+                        following up, booking meetings, and closing deals. You don't manage a CRM—you manage a growing
+                        team of tireless digital workers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- LEAD CAPTURE FORM SECTION                   -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="contact" class="lead-form-section">
+        <div class="section-header">
+            <span class="section-tag">Get Started</span>
+            <h2 class="section-title">Start Your Growth Journey</h2>
+            <p class="section-subtitle">Fill out the form below and one of our growth consultants will be in touch
+                within 24 hours.</p>
+        </div>
+        <div class="lead-form-container reveal-element">
+            <iframe src="https://api.leadconnectorhq.com/widget/form/0Wsdj3Ugy0XUlfVIaMAP"
+                style="border:none;width:100%;min-height:500px;border-radius:16px;" id="inline_0Wsdj3Ugy0XUlfVIaMAP"
+                data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value=""
+                data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate"
+                data-deactivation-value="" data-form-name="LeadGenPro Contact" data-height="500"
+                data-layout-iframe-id="inline_0Wsdj3Ugy0XUlfVIaMAP" data-form-id="0Wsdj3Ugy0XUlfVIaMAP"
+                title="LeadGenPro CRM Contact Form" loading="lazy">
+            </iframe>
+            <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- FINAL CTA SECTION                           -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="final-cta" id="final-cta">
+        <div class="cta-orb cta-orb-1"></div>
+        <div class="cta-orb cta-orb-2"></div>
+        <div class="cta-content reveal-element">
+            <h2 class="cta-headline">Ready to Defy Gravity?</h2>
+            <p class="cta-subtext">The future of business is autonomous. Don't be the anchor that holds your own growth
+                back. Book a strategy call and see how AI Employees can transform your revenue.</p>
+            <div class="cta-actions">
+                <a href="javascript:void(0)" class="btn btn-primary btn-xl open-booking" id="final-cta-btn">
+                    <span>Book Your Strategy Call</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+            <p class="cta-micro">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                Free consultation · No obligation · Cancel anytime
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- FOOTER                                      -->
+    <!-- ═══════════════════════════════════════════ -->
+    <footer class="footer" id="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">
+                    <img src="assets/logo.png" alt="LeadGenPro CRM Logo">
+                </a>
+                <p class="footer-tagline">The world's first autonomous CRM. Powered by AI Employees that never sleep.
+                </p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter" class="social-link" id="social-twitter">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" class="social-link" id="social-linkedin">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M20.47 2H3.53a1.45 1.45 0 0 0-1.47 1.43v17.14A1.45 1.45 0 0 0 3.53 22h16.94a1.45 1.45 0 0 0 1.47-1.43V3.43A1.45 1.45 0 0 0 20.47 2zM8.09 18.74h-3v-9h3zM6.59 8.48a1.56 1.56 0 1 1 0-3.12 1.56 1.56 0 1 1 0 3.12zM18.91 18.74h-3v-4.26c0-1.14-.03-2.61-1.59-2.61-1.6 0-1.84 1.25-1.84 2.53v4.34h-3v-9h2.89v1.33h.04a3.17 3.17 0 0 1 2.85-1.56c3.05 0 3.61 2 3.61 4.61z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="YouTube" class="social-link" id="social-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="social-link" id="social-instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#">Integrations</a>
+                <a href="#">API Docs</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="#">About Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Blog</a>
+                <a href="#">Case Studies</a>
+                <a href="#">Press Kit</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Support</h4>
+                <a href="#">Help Center</a>
+                <a href="#">Documentation</a>
+                <a href="#">System Status</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Community</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 LeadGenPro CRM. All Rights Reserved. Built for the Elite.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Calendar Modal -->
+    <div class="lc-booking-modal-overlay" id="booking-modal">
+        <div class="lc-booking-modal">
+            <button class="lc-booking-modal-close" id="booking-modal-close" aria-label="Close booking">&times;</button>
+            <iframe src="https://api.leadconnectorhq.com/widget/bookings/leadgenprocrmbooking"
+                style="border:none;width:100%;min-height:600px;border-radius:24px;"
+                title="Book a Demo with LeadGenPro CRM" loading="lazy">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- Custom Script -->
+    <script src="main.js"></script>
+</body>
+
+</html>

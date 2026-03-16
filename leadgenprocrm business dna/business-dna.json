@@ -1,0 +1,137 @@
+{
+  "name": "LeadGenProCRM",
+  "overview": "LeadGenProCRM is an all-in-one marketing and CRM platform that empowers businesses to streamline lead generation, customer management, and sales processes. By integrating AI-driven automation, website building, and multi-channel communication tools, it helps companies of all sizes increase efficiency and drive revenue growth.",
+  "websiteUrl": "https://www.leadgenprocrm.com/",
+  "brandValues": [
+    "Innovation",
+    "Efficiency",
+    "Security",
+    "Scalability"
+  ],
+  "visualAesthetics": [
+    "clean-tech",
+    "vibrant minimalism",
+    "automation-focused",
+    "user-centric",
+    "polished saas"
+  ],
+  "toneOfVoice": [
+    "Professional",
+    "Authoritative",
+    "Empowering",
+    "Efficient"
+  ],
+  "fonts": [
+    "montserrat"
+  ],
+  "campaigns": [
+    {
+      "creatives": [
+        {
+          "title": "Your May growth, automated.",
+          "versions": [
+            {
+              "fileName": "resource_893tvJ9vkbgaAD3-W89_Ko.png"
+            }
+          ]
+        },
+        {
+          "title": "The manual task trap.",
+          "versions": [
+            {
+              "fileName": "resource_bev19nY3Z7k1u8FR2U54vG.png"
+            }
+          ]
+        },
+        {
+          "title": "Unleash the AI advantage.",
+          "versions": [
+            {
+              "fileName": "resource_87BlK14FQsF2FSi0ZQ1OTo.png"
+            }
+          ]
+        },
+        {
+          "title": "Reach the next level.",
+          "versions": [
+            {
+              "fileName": "resource_9BWZCOPN6RO7mZcY0Xq_Ia.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "creatives": [
+        {
+          "title": "Spring Clean Your Tech Stack",
+          "versions": [
+            {
+              "fileName": "resource_aP1JTajpaWD5Ed4HO0t_cm.png"
+            }
+          ]
+        },
+        {
+          "title": "The Manual Follow-Up Mess",
+          "versions": [
+            {
+              "fileName": "resource_bd5zAPRDBgRbsfYTmDE_ZH.png"
+            }
+          ]
+        },
+        {
+          "title": "Automate 10+ Hours Weekly",
+          "versions": [
+            {
+              "fileName": "resource_aSTeOzmNAZneAVezpfDOA3.png"
+            }
+          ]
+        },
+        {
+          "title": "Ready For The Q2 Rush",
+          "versions": [
+            {
+              "fileName": "resource_8XFcJEjTjbK0BleCaZ7_ha.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "creatives": [
+        {
+          "title": "Stop Paying for 5 Subscriptions",
+          "versions": [
+            {
+              "fileName": "resource_b0iLdksspfs4tvgAXl2ODm.png"
+            }
+          ]
+        },
+        {
+          "title": "End the Marketing App Chaos",
+          "versions": [
+            {
+              "fileName": "resource_8uYZNcVG2ur5MDtTYbQ4xA.png"
+            }
+          ]
+        },
+        {
+          "title": "One Secure Data Fortress",
+          "versions": [
+            {
+              "fileName": "resource_8aqaDpGLd5M3YtYVNI8_l3.png"
+            }
+          ]
+        },
+        {
+          "title": "AI-Driven Growth on Autopilot",
+          "versions": [
+            {
+              "fileName": "resource_bFQN5MRx76O9qhe6iDUkRh.png"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
